@@ -13,6 +13,7 @@
   justify-content: center;
   flex-direction: column;
   height: 100vh;
+  overflow: hidden;
 }
 
 .header {
@@ -162,15 +163,6 @@ input::file-selector-text {
   background: rgb(23, 199, 170);
 }
 
-@media screen and (max-width: 480px) {
-  h1 {
-    font-size: 40px;
-  }
-  .hero-icon {
-    width: 150px;
-  }
-}
-
 @media screen and (max-width: 780px) {
   h1 {
     font-size: 40px;
@@ -178,5 +170,13 @@ input::file-selector-text {
 
   .hero-icon {
     width: 200px;
+  }
+}
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 30px;
+  }
+  .hero-icon {
+    width: 180px;
   }
 }
