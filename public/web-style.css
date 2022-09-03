@@ -18,6 +18,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: auto;
 }
 
 .top-section {
@@ -66,6 +67,7 @@ h1 {
   width: 100%;
   height: 20vh;
   align-items: center;
+  overflow: auto;
 }
 
 .mid-container {
@@ -75,7 +77,7 @@ h1 {
   align-items: center;
   height: 100%;
   width: 80%;
-  min-width: 500px;
+  min-width: 300px;
   position: relative;
 }
 
@@ -99,21 +101,21 @@ h1 {
   padding: 30px 0;
   height: 100%;
   width: 80%;
-  min-width: 500px;
+  min-width: 300px;
 }
 
 .header-container {
   display: flex;
   flex-direction: row;
   width: 80%;
-  min-width: 500px;
+  min-width: 300px;
   height: 100%;
   align-items: center;
 }
 
 #myVideo {
   position: relative;
-  min-width: 500px;
+  min-width: 300px;
   width: 100%;
 }
 
@@ -128,4 +130,23 @@ h1 {
 
 .header-info h4 {
   font-weight: 100;
+}
+
+@media screen and (max-width: 500px) {
+  .top-section img {
+    width: 100px;
+    height: 100px;
+  }
+  h1 {
+    font-size: 25px;
+  }
+  h2 {
+    font-size: 15px;
+  }
+  h3 {
+    font-size: 15px;
+  }
+  h4 {
+    font-size: 11px;
+  }
 }

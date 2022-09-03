@@ -111,7 +111,7 @@ const setTemplate = (helloMsg, img1, video, about) => {
       </div>
       <div class="mid-section">
         <div class="mid-container">
-          <video muted autoplay width="500px" controls loop id="myVideo">
+          <video muted autoplay width="300px" controls loop id="myVideo">
             <source
               src="http://${serverAddress}:${PORT}/stream/${video}"
               type="video/mp4"
