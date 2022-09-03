@@ -78,8 +78,61 @@ const newStreamRoute = (videoName) => {
   return streamRoute;
 };
 
-const setTemplate = (helloMsg, img1, video) => {
-  const template = `<!DOCTYPE html>
+//const serverAddress = 'http://172.24.20.160';
+//const serverAddress = 'http://localhost';
+const serverAddress = '18.212.42.92';
+//const serverAddress = 'localhost';
+
+const setTemplate = (helloMsg, img1, video, about) => {
+  const template = `<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${helloMsg}</title>
+    <link rel="stylesheet" href="web-style.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="top-section">
+        <div class="header-container">
+          <img
+            src="http://${serverAddress}:${PORT}/data/${img1}"
+            width="300"
+            height="*"
+            alt=""
+          />
+          <div class="header-info">
+            <h1>Hello,</h1>
+            <h3>You can call me ${helloMsg}!</h3>
+            <h4>Look closely how wonderful I am!</h4>
+          </div>
+        </div>
+      </div>
+      <div class="mid-section">
+        <div class="mid-container">
+          <video muted autoplay width="500px" controls loop id="myVideo">
+            <source
+              src="http://${serverAddress}:${PORT}/stream/${video}"
+              type="video/mp4"
+            />
+          </video>
+          <h3>This is what I do 😄</h3>
+        </div>
+      </div>
+      <div class="bot-section">
+        <div class="bot-container">
+          <h3>About Me</h3>
+          <p>
+            ${about}
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>`;
+
+  const template2 = `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -90,9 +143,9 @@ const setTemplate = (helloMsg, img1, video) => {
   <body>
     <h1>${helloMsg}</h1>
     <video muted autoplay height="400" controls>
-      <source src="http://localhost:${PORT}/stream/${video}" type="video/mp4" />
+      <source src="http://${serverAddress}:${PORT}/stream/${video}" type="video/mp4" />
     </video>
-    <img src="http://localhost:${PORT}/data/${img1}" width="300" height="*" alt="" />
+    <img src="http://${serverAddress}:${PORT}/data/${img1}" width="300" height="*" alt="" />
   </body>
 </html>
 `;
@@ -100,41 +153,37 @@ const setTemplate = (helloMsg, img1, video) => {
   return template;
 };
 
-//const serverAddress = 'http://172.24.20.160';
-//const serverAddress = 'http://localhost';
-const serverAddress = app.post(
-  '/multiple',
-  upload.array('images', 10),
-  (req, res) => {
-    const visitorName = req.body.visitor + '_' + Date.now();
-    //Make profile dirs
-    fs.mkdirSync(`./visitor/${visitorName}`);
+app.post('/multiple', upload.array('images', 10), async (req, res) => {
+  const visitorName = req.body.visitor + '_' + Date.now();
+  //Make profile dirs
+  fs.mkdirSync(`./visitor/${visitorName}`);
 
-    //Create new stream route
-    fs.appendFile(
-      './routes/stream.js',
-      newStreamRoute(req.files[1].filename),
-      (err) => {
-        if (err) throw err;
-        console.log('stream route created');
-      }
-    );
+  //Create new stream route
+  fs.appendFile(
+    './routes/stream.js',
+    newStreamRoute(req.files[1].filename),
+    (err) => {
+      if (err) throw err;
+      console.log('stream route created');
+    }
+  );
 
-    //Create Website
-    fs.appendFile(
-      `./visitor/${visitorName}/${visitorName}.html`,
-      setTemplate(
-        `Hi ${req.body.visitor}`,
-        `${req.files[0].filename}`,
-        `${req.files[1].filename}`
-      ),
-      function (err) {
-        if (err) throw err;
-        console.log('Saved!');
-      }
-    );
+  //Create Website
+  fs.appendFile(
+    `./visitor/${visitorName}/${visitorName}.html`,
+    setTemplate(
+      `${req.body.visitor}`,
+      `${req.files[0].filename}`,
+      `${req.files[1].filename}`,
+      `${req.body.about}`
+    ),
+    function (err) {
+      if (err) throw err;
+      console.log('Saved!');
+    }
+  );
 
-    const route = `router.get('/${visitorName}', (req, res) => {
+  const route = `router.get('/${visitorName}', (req, res) => {
       res.sendFile(
         path.join(
           __dirname,
@@ -146,20 +195,19 @@ const serverAddress = app.post(
           );
         });`;
 
-    //Create route
-    fs.appendFile('./routes/visitors.js', route, (err) => {
-      if (err) throw err;
-      console.log('route created');
-    });
+  //Create route
+  fs.appendFile('./routes/visitors.js', route, (err) => {
+    if (err) throw err;
+    console.log('route created');
+  });
 
-    const visitorLink = `${serverAddress}:${PORT}/${visitorName}`;
-
-    //Send MAIL
-    send_mail(req.body.visitor, visitorLink, req.body.email);
-
-    res.json({ link: `${serverAddress}:${PORT}/${visitorName}` });
-  }
-);
+  const visitorLink = `${serverAddress}:${PORT}/${visitorName}`;
+  //Send MAIL
+  await send_mail(req.body.visitor, visitorLink, req.body.email);
+  //res.json({ link: `${serverAddress}:${PORT}/${visitorName}` });
+  res.sendFile(path.join(__dirname, '/my-Link.html'));
+  console.clear;
+});
 
 //Send mail to visitor
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));

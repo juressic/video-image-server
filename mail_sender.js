@@ -35,13 +35,14 @@ const send_mail = (name, link, recepient) => {
       console.log('Success: ', result);
     }
     transport.close();
+    process.exit(1);
   });
 };
 
 function get_html_message(name, link) {
   return `
     <h3>${name}! Hey, thanks for visiting</h3>
-    <h2>${link} Hey, here is link for your web page</h2>
+    <h2> Hey, here is link for your web page: http://${link} </h2>
     `;
 }
 

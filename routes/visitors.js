@@ -125,4 +125,74 @@ router.get('/Jure_1661815960509', (req, res) => {
           'JuricaM_1661885762974.html'
           )
           );
+        });router.get('/Jurica_1661982604881', (req, res) => {
+      res.sendFile(
+        path.join(
+          __dirname,
+          '..',
+          'visitor',
+          'Jurica_1661982604881',
+          'Jurica_1661982604881.html'
+          )
+          );
+        });router.get('/asfsdfa_1661985921854', (req, res) => {
+      res.sendFile(
+        path.join(
+          __dirname,
+          '..',
+          'visitor',
+          'asfsdfa_1661985921854',
+          'asfsdfa_1661985921854.html'
+          )
+          );
+        });router.get('/;klm_1662112152588', (req, res) => {
+      res.sendFile(
+        path.join(
+          __dirname,
+          '..',
+          'visitor',
+          ';klm_1662112152588',
+          ';klm_1662112152588.html'
+          )
+          );
+        });router.get('/ds_1662159033933', (req, res) => {
+      res.sendFile(
+        path.join(
+          __dirname,
+          '..',
+          'visitor',
+          'ds_1662159033933',
+          'ds_1662159033933.html'
+          )
+          );
+        });router.get('/Jurica_1662202430426', (req, res) => {
+      res.sendFile(
+        path.join(
+          __dirname,
+          '..',
+          'visitor',
+          'Jurica_1662202430426',
+          'Jurica_1662202430426.html'
+          )
+          );
+        });router.get('/JureSapiens_1662203654378', (req, res) => {
+      res.sendFile(
+        path.join(
+          __dirname,
+          '..',
+          'visitor',
+          'JureSapiens_1662203654378',
+          'JureSapiens_1662203654378.html'
+          )
+          );
+        });router.get('/Jurica_1662205537078', (req, res) => {
+      res.sendFile(
+        path.join(
+          __dirname,
+          '..',
+          'visitor',
+          'Jurica_1662205537078',
+          'Jurica_1662205537078.html'
+          )
+          );
         });

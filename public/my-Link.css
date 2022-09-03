@@ -1,0 +1,28 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  height: 100vh;
+  text-align: center;
+  color: white;
+  background-color: rgb(113, 201, 150);
+}
+
+h1 {
+  background-color: rgba(0, 0, 0, 0.288);
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 3.5vw;
+  font-size: min(3vw);
+}
