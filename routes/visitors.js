@@ -195,4 +195,24 @@ router.get('/Jure_1661815960509', (req, res) => {
           'Jurica_1662205537078.html'
           )
           );
+        });router.get('/Jurica_1662215061845', (req, res) => {
+      res.sendFile(
+        path.join(
+          __dirname,
+          '..',
+          'visitor',
+          'Jurica_1662215061845',
+          'Jurica_1662215061845.html'
+          )
+          );
+        });router.get('/JuricaMiskov_1662284459653', (req, res) => {
+      res.sendFile(
+        path.join(
+          __dirname,
+          '..',
+          'visitor',
+          'JuricaMiskov_1662284459653',
+          'JuricaMiskov_1662284459653.html'
+          )
+          );
         });

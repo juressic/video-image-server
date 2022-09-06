@@ -80,8 +80,8 @@ const newStreamRoute = (videoName) => {
 
 //const serverAddress = 'http://172.24.20.160';
 //const serverAddress = 'http://localhost';
-const serverAddress = '18.212.42.92';
-//const serverAddress = 'localhost';
+//const serverAddress = '18.212.42.92';
+const serverAddress = 'localhost';
 
 const setTemplate = (helloMsg, img1, video, about) => {
   const template = `<html lang="en">
@@ -154,7 +154,8 @@ const setTemplate = (helloMsg, img1, video, about) => {
 };
 
 app.post('/multiple', upload.array('images', 10), async (req, res) => {
-  const visitorName = req.body.visitor + '_' + Date.now();
+  var visitorName = req.body.visitor + '_' + Date.now();
+  visitorName = visitorName.replace(/\s+/g, '');
   //Make profile dirs
   fs.mkdirSync(`./visitor/${visitorName}`);
 

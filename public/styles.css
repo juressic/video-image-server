@@ -14,15 +14,17 @@
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
+  background-color: #43aa7d;
 }
 
 .header {
+  z-index: 1;
   display: flex;
-  background-color: #43aa7d;
+  background-color: #5a5a5a59;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
-  height: 80vh;
+  justify-content: space-around;
+  height: 100vh;
 }
 
 .submit-section {
@@ -42,6 +44,7 @@ button {
   background-color: #d0af3a;
   -webkit-filter: drop-shadow(5px 5px 5px #222);
   filter: drop-shadow(0px 20px 20px rgba(34, 34, 34, 0.397));
+  margin: 30px;
 }
 
 button :hover {
@@ -66,7 +69,12 @@ p {
 }
 
 .hero-icon {
-  width: 250px;
+  position: fixed;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
   -webkit-filter: drop-shadow(5px 5px 5px #222);
   filter: drop-shadow(30px 50px 10px rgba(34, 34, 34, 0.397));
 }
@@ -168,15 +176,15 @@ input::file-selector-text {
     font-size: 40px;
   }
 
-  .hero-icon {
+  /*.hero-icon {
     width: 200px;
-  }
+  }*/
 }
 @media screen and (max-width: 480px) {
   h1 {
     font-size: 30px;
   }
-  .hero-icon {
+  /*.hero-icon {
     width: 180px;
-  }
+  }*/
 }
