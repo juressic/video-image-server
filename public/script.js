@@ -9,7 +9,7 @@ function handleFiles() {
 
 uploadFieldImage.onchange = function () {
   console.log('file input');
-  if (this.files[0].size > 1097152) {
+  if (this.files[0].size > 3097152) {
     alert('Image file is too big!');
     this.value = '';
   }
@@ -17,7 +17,7 @@ uploadFieldImage.onchange = function () {
 
 uploadField.onchange = function () {
   console.log('file input');
-  if (this.files[0].size > 2097152) {
+  if (this.files[0].size > 9097152) {
     alert('Video file is too big!');
     this.value = '';
   }
