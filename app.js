@@ -206,7 +206,8 @@ app.post('/multiple', upload.array('images', 10), async (req, res) => {
   //Send MAIL
   await send_mail(req.body.visitor, visitorLink, req.body.email);
   //res.json({ link: `${serverAddress}:${PORT}/${visitorName}` });
-  res.sendFile(path.join(__dirname, '/my-Link.html'));
+  //res.sendFile(path.join(__dirname, '/my-Link.html'));
+  res.redirect('http://' + visitorLink);
   console.clear;
 });
 
