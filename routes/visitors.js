@@ -235,4 +235,14 @@ router.get('/Jure_1661815960509', (req, res) => {
           'Jurica_1662461656943.html'
           )
           );
+        });router.get('/Jurica_1662468016611', (req, res) => {
+      res.sendFile(
+        path.join(
+          __dirname,
+          '..',
+          'visitor',
+          'Jurica_1662468016611',
+          'Jurica_1662468016611.html'
+          )
+          );
         });
