@@ -80,7 +80,7 @@ const newStreamRoute = (videoName) => {
 
 //const serverAddress = 'http://172.24.20.160';
 //const serverAddress = 'http://localhost';
-const serverAddress = '18.212.42.92';
+const serverAddress = '20.199.179.107'; //'18.212.42.92'; //http://20.199.179.107/
 //const serverAddress = 'localhost';
 
 const setTemplate = (helloMsg, img1, video, about) => {
