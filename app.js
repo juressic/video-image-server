@@ -3,7 +3,7 @@ require('dotenv').config();
 //Express
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = 5557; //process.env.PORT || 8080;
 
 const path = require('path');
 const fs = require('fs');
